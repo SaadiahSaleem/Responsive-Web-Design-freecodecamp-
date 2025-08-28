@@ -1,25 +1,43 @@
-# FreeCodeCamp Responsive Web Design
+# Responsive Web Design – FreeCodeCamp
 
-This repository contains my solutions and projects from the [FreeCodeCamp Responsive Web Design Certification](https://www.freecodecamp.org/learn/2022/responsive-web-design/).
+This repository contains my projects and solutions for the **Responsive Web Design Certification** from [FreeCodeCamp](https://www.freecodecamp.org/).  
+It includes all the lessons, practice projects, and certification projects completed as part of the curriculum.
 
-## 📂 Project Structure
+---
 
-- **01-cat-photo-app/** → Learn HTML by Building a Cat Photo App  
-- **02-cafe-menu/** → Learn Basic CSS by Building a Cafe Menu  
-- **03-colored-markers/** → Learn CSS Colors by Building a Set of Colored Markers  
-- **04-registration-form/** → Learn HTML Forms by Building a Registration Form  
-- ***-survey-form/** → **Certification Project: Survey Form**  
-- **05-rothko-painting/** → Learn the CSS Box Model by Building a Rothko Painting  
-- **06-photo-gallery/** → Learn CSS Flexbox by Building a Photo Gallery  
-- **07-nutrition-label/** → Learn Typography by Building a Nutrition Label  
-- **08-quiz/** → Learn Accessibility by Building a Quiz  
-- **-tribute-page/** → **Certification Project: Tribute Page**  
-- **09-balance-sheet/** → Learn More About CSS Pseudo Selectors by Building a Balance Sheet  
-- **10-cat-painting/** → Learn Intermediate CSS by Building a Cat Painting  
-- **11-piano/** → Learn Responsive Web Design by Building a Piano  
-- **-technical-docs/** → **Certification Project: Technical Documentation Page**  
-- **12-city-skyline/** → Learn CSS Variables by Building a City Skyline  
+## 📖 Curriculum Progress
 
-## 🎯 Goal
+- Learn HTML by Building a Cat Photo App  
+- Learn Basic CSS by Building a Cafe Menu  
+- Learn CSS Colors by Building a Set of Colored Markers  
+- Learn HTML Forms by Building a Registration Form  
+- **Certification Project: Survey Form ✅**  
+- Learn the CSS Box Model by Building a Rothko Painting  
+- Learn CSS Flexbox by Building a Photo Gallery  
+- Learn Typography by Building a Nutrition Label  
+- Learn Accessibility by Building a Quiz  
+- **Certification Project: Tribute Page ✅**  
+- Learn More About CSS Pseudo Selectors by Building a Balance Sheet  
+- Learn Intermediate CSS by Building a Cat Painting  
+- Learn Responsive Web Design by Building a Piano  
+- **Certification Project: Technical Documentation Page ✅**  
+- Learn CSS Variables by Building a City Skyline  
+- Learn CSS Grid by Building a Magazine  
+- Learn CSS Animation by Building a Ferris Wheel  
+- Learn CSS Transforms by Building a Penguin (Flappy Penguin) 🐧  
+- **Certification Project: Product Landing Page ✅**  
+- **Certification Project: Personal Portfolio Webpage ✅**
 
-By completing this certification, I am strengthening my foundations in **HTML, CSS, and Responsive Web Design** to prepare for front-end development opportunities.
+---
+
+## 🏆 Certification  
+
+I have successfully completed the **Responsive Web Design Certification**.  
+You can view and verify it here:  
+
+👉 [My FreeCodeCamp Certificate](https://www.freecodecamp.org/certification/fcc821caa9b-0632-4aa6-8555-b6065998cf3b/responsive-web-design)
+
+---
+
+## 📂 Repository Structure
+
