@@ -56,18 +56,18 @@ body {
 
 .creative-intro { max-width: 820px; margin: 0 auto 1.5rem; text-align: center; color: var(--muted); line-height: 1.75; }
 .creative-intro a { color: var(--accent); text-decoration: none; }
-/* Show playlist thumbnails in a single compact row on wide screens */
-.creative-grid { display: flex; gap: 0.8rem; justify-content: center; align-items: center; flex-wrap: wrap; max-width: 900px; margin: 0 auto; }
-.creative-card { display: block; text-decoration: none; color: inherit; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--card-bg); transition: transform 220ms ease, box-shadow 220ms ease; flex: 0 0 180px; }
+/* Force compact row and constrain media inside cards (higher priority rules) */
+.creative-grid { display: flex !important; gap: 0.8rem !important; justify-content: center !important; align-items: center !important; flex-wrap: wrap !important; max-width: 900px; margin: 0 auto; }
+.creative-card { display: block; text-decoration: none; color: inherit; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--card-bg); transition: transform 220ms ease, box-shadow 220ms ease; flex: 0 0 180px !important; max-width: 180px !important; }
 .creative-card:hover, .creative-card:focus-visible { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(2,6,23,0.55); }
-.creative-card img { width: 100%; display: block; height: 90px; object-fit: cover; }
-.creative-card-body { padding: 0.6rem; text-align:center; }
+.creative-card img, .creative-card iframe, .creative-card video { width: 100% !important; height: 90px !important; object-fit: cover !important; display: block; }
+.creative-card-body { padding: 0.6rem; text-align: center; }
 .creative-card-body h3 { margin: 0; font-size: 0.96rem; }
 
 @media (max-width: 640px) {
   .creative-grid { flex-direction: column; gap: 1rem; }
-  .creative-card { flex: 1 1 auto; width: 100%; }
-  .creative-card img { height: 140px; }
+  .creative-card { flex: 1 1 auto; width: 100%; max-width: none !important; }
+  .creative-card img, .creative-card iframe { height: 140px !important; }
 }
 
 /* Header / Navbar */
