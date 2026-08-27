@@ -63,8 +63,10 @@ filterButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     const filter = btn.dataset.filter;
 
+    filterButtons.forEach(button => button.classList.toggle("active", button === btn));
+
     projectCards.forEach(card => {
-      const category = card.dataset.category;
+      const category = (card.dataset.category || "").toLowerCase();
       if (filter === "all" || category.includes(filter)) {
         card.style.display = "block";
       } else {
