@@ -210,16 +210,28 @@ body::before {
  padding: 0;
  order: 1;
 }
-.nav-links a {
- color: rgba(235, 242, 255, 0.8);
+.nav-links a,
+.nav-links a:visited {
+ color: #000000;
  text-decoration: none;
  padding: 0.55rem 0.8rem;
  border-radius: 999px;
  transition: all 180ms ease;
  font-size: 0.95rem;
 }
-.nav-links a:hover, .nav-links a:focus {
- color: var(--text);
+html[data-theme="dark"] .nav-links a,
+html[data-theme="dark"] .nav-links a:visited {
+ color: #ffffff !important;
+}
+.nav-links a:hover,
+.nav-links a:focus {
+ color: #000000;
+ background: rgba(124, 58, 237, 0.08);
+ outline: none;
+}
+html[data-theme="dark"] .nav-links a:hover,
+html[data-theme="dark"] .nav-links a:focus {
+ color: #ffffff !important;
  background: rgba(124, 58, 237, 0.08);
  outline: none;
 }
@@ -303,15 +315,21 @@ body::before {
  color: white;
  box-shadow: 0 16px 35px rgba(124, 58, 237, 0.32);
 }
-.secondary-btn {
- background: rgba(255, 255, 255, 0.05);
- color: var(--text);
- border-color: var(--border);
-}
+.secondary-btn,
 .download-btn {
- background: transparent;
- color: var(--muted);
- border: 1px dashed var(--border);
+ color: var(--accent-2);
+}
+html[data-theme="dark"] .secondary-btn,
+html[data-theme="dark"] .download-btn {
+ background: rgba(255, 255, 255, 0.02);
+ color: #cfefff !important;
+ border-color: rgba(191, 219, 255, 0.7);
+}
+html[data-theme="light"] .secondary-btn,
+html[data-theme="light"] .download-btn {
+ background: rgba(255, 255, 255, 0.02);
+ color: var(--accent-2);
+ border-color: rgba(8, 145, 178, 0.35);
 }
 .btn:focus { box-shadow: 0 0 0 5px rgba(34, 211, 238, 0.12); outline: none; }
 
@@ -401,7 +419,7 @@ body::before {
  box-shadow: 0 22px 40px rgba(2, 6, 23, 0.32);
 }
 .skill-card { text-align: left; }
-.skill-card h3 { margin: 0 0 0.8rem; color: var(--card-text); }
+.skill-card h3 { margin: 0 0 0.8rem; color: #000000; }
 .skill-list {
  list-style: none;
  padding: 0;
@@ -418,8 +436,11 @@ body::before {
  display: inline-flex;
  align-items: center;
  gap: 0.45rem;
- color: var(--card-text);
+ color: var(--accent-2);
  font-size: 0.9rem;
+}
+.skill-list li span {
+ color: var(--accent-2);
 }
 .skill-list li i { color: var(--accent-2); }
 
