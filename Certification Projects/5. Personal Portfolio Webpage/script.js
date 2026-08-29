@@ -1,128 +1,328 @@
-// Theme toggle
+document.addEventListener("DOMContentLoaded", () => {
+    // =========================================
+    // Theme Toggle
+    // =========================================
 
-// FAB menu toggle
-const fab = document.getElementById("fab");
-const fabMenu = document.getElementById("fabMenu");
+    const themeToggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
 
-fab.addEventListener("click", () => {
-  fabMenu.classList.toggle("show");
-});
+    function setTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
 
+        if (themeToggle) {
+            const icon = themeToggle.querySelector("i");
 
-const themeToggle = document.getElementById("theme-toggle");
-const root = document.documentElement;
+            if (icon) {
+                icon.className =
+                    theme === "dark"
+                        ? "fas fa-moon"
+                        : "fas fa-sun";
+            }
 
-function setTheme(theme) {
-  root.setAttribute("data-theme", theme);
-  localStorage.setItem("theme", theme);
-}
-
-const savedTheme = localStorage.getItem("theme") || "dark";
-setTheme(savedTheme);
-
-themeToggle.addEventListener("click", () => {
-  const current = root.getAttribute("data-theme");
-  setTheme(current === "dark" ? "light" : "dark");
-});
-
-// Scroll-to-top button
-const scrollTopBtn = document.getElementById("scroll-top");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    scrollTopBtn.classList.add("show");
-  } else {
-    scrollTopBtn.classList.remove("show");
-  }
-});
-
-scrollTopBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-// Scroll reveal
-const revealSections = document.querySelectorAll(".section.reveal");
-
-function revealOnScroll() {
-  revealSections.forEach(section => {
-    const rect = section.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-      section.classList.add("active");
-    }
-  });
-}
-
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
-
-// Project filter system
-const filterButtons = document.querySelectorAll(".filter-btn");
-const projectCards = document.querySelectorAll(".project-card");
-
-filterButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const filter = btn.dataset.filter;
-
-    projectCards.forEach(card => {
-      const category = card.dataset.category;
-      if (filter === "all" || category.includes(filter)) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
-    });
-  });
-});
-
-// Accordion behavior: exclusive open, smooth height animation
-(function(){
-  const accordions = document.querySelectorAll('.skill-accordion');
-  if (!accordions.length) return;
-
-  accordions.forEach(details => {
-    const body = details.querySelector('.accordion-body');
-    if (!body) return;
-
-    body.style.transition = 'max-height 320ms ease, opacity 320ms ease';
-
-    // initialize body height
-    if (details.open) {
-      body.style.maxHeight = body.scrollHeight + 'px';
-      body.style.opacity = '1';
-      body.style.overflow = 'visible';
-      const onEnd = () => { body.style.maxHeight = 'none'; body.removeEventListener('transitionend', onEnd); };
-      body.addEventListener('transitionend', onEnd);
-    } else {
-      body.style.maxHeight = '0px';
-      body.style.opacity = '0';
-      body.style.overflow = 'hidden';
+            themeToggle.setAttribute(
+                "aria-label",
+                theme === "dark"
+                    ? "Switch to light mode"
+                    : "Switch to dark mode"
+            );
+        }
     }
 
-    details.addEventListener('toggle', () => {
-      if (details.open) {
-        // close others
-        accordions.forEach(d => { if (d !== details && d.open) d.open = false; });
-        // open current
-        body.style.maxHeight = body.scrollHeight + 'px';
-        body.style.opacity = '1';
-        body.style.overflow = 'visible';
-        const onEnd = () => { body.style.maxHeight = 'none'; body.removeEventListener('transitionend', onEnd); };
-        body.addEventListener('transitionend', onEnd);
-      } else {
-        // animate close
-        body.style.maxHeight = body.scrollHeight + 'px';
-        requestAnimationFrame(() => {
-          body.style.maxHeight = '0px';
-          body.style.opacity = '0';
-          body.style.overflow = 'hidden';
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    setTheme(savedTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const currentTheme = root.getAttribute("data-theme");
+            setTheme(currentTheme === "dark" ? "light" : "dark");
         });
-      }
+    }
+
+
+    // =========================================
+    // Floating Action Button Menu
+    // =========================================
+
+    const fab = document.getElementById("fab");
+    const fabMenu = document.getElementById("fabMenu");
+
+    if (fab && fabMenu) {
+        fab.addEventListener("click", () => {
+            const isOpen = fabMenu.classList.toggle("show");
+
+            fabMenu.setAttribute(
+                "aria-hidden",
+                String(!isOpen)
+            );
+
+            fab.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+        });
+
+        // Close FAB menu when a navigation item is clicked
+        fabMenu.querySelectorAll(".fab-item").forEach((item) => {
+            item.addEventListener("click", () => {
+                fabMenu.classList.remove("show");
+                fabMenu.setAttribute("aria-hidden", "true");
+                fab.setAttribute("aria-expanded", "false");
+            });
+        });
+    }
+
+
+    // =========================================
+    // Scroll To Top
+    // =========================================
+
+    const scrollTopBtn = document.getElementById("scroll-top");
+
+    if (scrollTopBtn) {
+        function updateScrollButton() {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        }
+
+        window.addEventListener(
+            "scroll",
+            updateScrollButton,
+            { passive: true }
+        );
+
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        updateScrollButton();
+    }
+
+
+    // =========================================
+    // Scroll Reveal
+    // =========================================
+
+    const revealSections =
+        document.querySelectorAll(".section.reveal");
+
+    function revealOnScroll() {
+        revealSections.forEach((section) => {
+            const rect = section.getBoundingClientRect();
+
+            if (rect.top < window.innerHeight - 100) {
+                section.classList.add("active");
+            }
+        });
+    }
+
+    window.addEventListener(
+        "scroll",
+        revealOnScroll,
+        { passive: true }
+    );
+
+    revealOnScroll();
+
+
+    // =========================================
+    // Project Filters
+    // =========================================
+
+    const filterButtons =
+        document.querySelectorAll(".filter-btn");
+
+    const projectCards =
+        document.querySelectorAll(".project-card");
+
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const filter = button.dataset.filter;
+
+            // Update active button
+            filterButtons.forEach((btn) => {
+                btn.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+            // Filter projects
+            projectCards.forEach((card) => {
+                const categories =
+                    card.dataset.category || "";
+
+                const shouldShow =
+                    filter === "all" ||
+                    categories
+                        .split(/\s+/)
+                        .includes(filter);
+
+                if (shouldShow) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
     });
 
-    // update expanded height on resize
-    window.addEventListener('resize', () => {
-      if (details.open) body.style.maxHeight = body.scrollHeight + 'px';
+
+    // =========================================
+    // Skills Accordion
+    // =========================================
+
+    const accordions =
+        document.querySelectorAll(".skill-accordion");
+
+    function getAccordionBody(details) {
+        return details.querySelector(".accordion-body");
+    }
+
+    function openAccordion(details) {
+        const body = getAccordionBody(details);
+
+        if (!body) return;
+
+        body.style.overflow = "hidden";
+        body.style.opacity = "0";
+        body.style.maxHeight = "0px";
+
+        requestAnimationFrame(() => {
+            body.style.maxHeight = body.scrollHeight + "px";
+            body.style.opacity = "1";
+        });
+
+        const finishOpening = (event) => {
+            if (event.propertyName !== "max-height") return;
+
+            if (details.open) {
+                body.style.maxHeight = "none";
+                body.style.overflow = "visible";
+            }
+
+            body.removeEventListener(
+                "transitionend",
+                finishOpening
+            );
+        };
+
+        body.addEventListener(
+            "transitionend",
+            finishOpening
+        );
+    }
+
+    function closeAccordion(details) {
+        const body = getAccordionBody(details);
+
+        if (!body) return;
+
+        // If max-height is "none", convert it to a real height
+        // before starting the closing animation.
+        body.style.overflow = "hidden";
+        body.style.maxHeight = body.scrollHeight + "px";
+
+        requestAnimationFrame(() => {
+            body.style.maxHeight = "0px";
+            body.style.opacity = "0";
+        });
+    }
+
+    accordions.forEach((details) => {
+        const body = getAccordionBody(details);
+
+        if (!body) return;
+
+        body.style.transition =
+            "max-height 320ms ease, opacity 240ms ease";
+
+        if (details.open) {
+            body.style.maxHeight = "none";
+            body.style.opacity = "1";
+            body.style.overflow = "visible";
+        } else {
+            body.style.maxHeight = "0px";
+            body.style.opacity = "0";
+            body.style.overflow = "hidden";
+        }
+
+        details.addEventListener("toggle", () => {
+            if (details.open) {
+                // Only allow one skill section to remain open.
+                accordions.forEach((other) => {
+                    if (
+                        other !== details &&
+                        other.open
+                    ) {
+                        closeAccordion(other);
+
+                        // Let the closing animation begin
+                        // before removing the open state.
+                        setTimeout(() => {
+                            other.open = false;
+
+                            const otherBody =
+                                getAccordionBody(other);
+
+                            if (otherBody) {
+                                otherBody.style.maxHeight = "0px";
+                                otherBody.style.opacity = "0";
+                                otherBody.style.overflow = "hidden";
+                            }
+                        }, 20);
+                    }
+                });
+
+                openAccordion(details);
+            } else {
+                closeAccordion(details);
+            }
+        });
     });
 
-  });
-})();
+
+    // =========================================
+    // Keep Open Accordion Heights Correct
+    // =========================================
+
+    window.addEventListener(
+        "resize",
+        () => {
+            accordions.forEach((details) => {
+                if (!details.open) return;
+
+                const body =
+                    getAccordionBody(details);
+
+                if (!body) return;
+
+                body.style.maxHeight = "none";
+                body.style.overflow = "visible";
+            });
+        },
+        { passive: true }
+    );
+
+
+    // =========================================
+    // Keyboard / Accessibility
+    // =========================================
+
+    if (fab) {
+        fab.setAttribute("aria-expanded", "false");
+        fab.setAttribute("aria-controls", "fabMenu");
+    }
+
+    // External links open safely
+    document
+        .querySelectorAll('a[target="_blank"]')
+        .forEach((link) => {
+            link.setAttribute("rel", "noopener noreferrer");
+        });
+});
