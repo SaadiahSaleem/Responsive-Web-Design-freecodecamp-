@@ -1,101 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Saadiah Saleem | Portfolio</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
             rel="stylesheet"
-    >
-
-    <!-- Font Awesome -->
-    <link
-            rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-    >
-
-    <!-- Main stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=clean1">
+    />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+    <link rel="stylesheet" href="styles.css?v=hud1" />
 </head>
 
 <body data-theme="dark">
 
-<!-- ==================================================
-     FLOATING ACTION BUTTON
-=================================================== -->
-<button
-        class="fab"
-        id="fab"
-        type="button"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
->
-    <i class="fas fa-bars" aria-hidden="true"></i>
-</button>
+<!-- HUD frame corners -->
+<div class="hud-corner corner-tl" aria-hidden="true"></div>
+<div class="hud-corner corner-tr" aria-hidden="true"></div>
+<div class="hud-corner corner-bl" aria-hidden="true"></div>
+<div class="hud-corner corner-br" aria-hidden="true"></div>
 
-<div
-        class="fab-menu"
-        id="fabMenu"
-        aria-hidden="true"
->
-    <a href="#hero" class="fab-item" aria-label="Home">
-        <i class="fas fa-home" aria-hidden="true"></i>
-        <span class="fab-label">Home</span>
-    </a>
+<!-- Telemetry strip -->
+<div class="telemetry-strip" aria-hidden="true">
+    <span class="telemetry-item"><i class="fas fa-circle telemetry-dot"></i>STATUS: OPEN TO REMOTE ROLES</span>
+    <span class="telemetry-item">LOC: COLOGNE, DE</span>
+    <span class="telemetry-item" id="telemetryClock">LOCAL: --:--:--</span>
+    <span class="telemetry-item telemetry-hide-sm">BUILD: FRONTEND.V1</span>
+</div>
 
-    <a href="#about" class="fab-item" aria-label="About">
-        <i class="fas fa-user" aria-hidden="true"></i>
-        <span class="fab-label">About</span>
-    </a>
+<!-- Radar sweep widget -->
+<div class="radar" aria-hidden="true">
+    <div class="radar-sweep"></div>
+    <span class="radar-blip blip-1"></span>
+    <span class="radar-blip blip-2"></span>
+</div>
 
-    <a href="#frontend-skills" class="fab-item" aria-label="Frontend skills">
-        <i class="fab fa-html5" aria-hidden="true"></i>
-        <span class="fab-label">Frontend</span>
-    </a>
+<!-- Starfield background -->
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div class="nebula-field" id="nebulaField" aria-hidden="true">
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="nebula nebula-3"></div>
+</div>
 
-    <a href="#js-skills" class="fab-item" aria-label="JavaScript skills">
-        <i class="fab fa-js-square" aria-hidden="true"></i>
-        <span class="fab-label">JavaScript</span>
-    </a>
+<!-- Floating Sidebar -->
+<div class="fab" id="fab" role="button" tabindex="0" aria-expanded="false" aria-label="Open quick navigation">
+    <i class="fas fa-satellite"></i>
+</div>
 
-    <a href="#tools-skills" class="fab-item" aria-label="Tools and platforms">
-        <i class="fas fa-tools" aria-hidden="true"></i>
-        <span class="fab-label">Tools</span>
-    </a>
-
-    <a href="#experience" class="fab-item" aria-label="Experience">
-        <i class="fas fa-briefcase" aria-hidden="true"></i>
-        <span class="fab-label">Experience</span>
-    </a>
-
-    <a href="#projects" class="fab-item" aria-label="Projects">
-        <i class="fas fa-folder-open" aria-hidden="true"></i>
-        <span class="fab-label">Projects</span>
-    </a>
-
-    <a href="#contact" class="fab-item" aria-label="Contact">
-        <i class="fas fa-envelope" aria-hidden="true"></i>
-        <span class="fab-label">Contact</span>
-    </a>
+<div class="fab-menu" id="fabMenu" aria-hidden="true">
+    <a href="#hero" class="fab-item" aria-label="Home"><i class="fas fa-home"></i><span class="fab-label">Home</span></a>
+    <a href="#about" class="fab-item" aria-label="About"><i class="fas fa-user"></i><span class="fab-label">About</span></a>
+    <a href="#frontend-skills" class="fab-item" aria-label="Frontend skills"><i class="fas fa-html5"></i><span class="fab-label">Frontend</span></a>
+    <a href="#js-skills" class="fab-item" aria-label="JavaScript skills"><i class="fab fa-js-square"></i><span class="fab-label">JavaScript</span></a>
+    <a href="#tools-skills" class="fab-item" aria-label="Tools and platforms"><i class="fas fa-tools"></i><span class="fab-label">Tools</span></a>
+    <a href="#experience" class="fab-item" aria-label="Experience"><i class="fas fa-briefcase"></i><span class="fab-label">Experience</span></a>
+    <a href="#projects" class="fab-item" aria-label="Projects"><i class="fas fa-folder-open"></i><span class="fab-label">Projects</span></a>
+    <a href="#contact" class="fab-item" aria-label="Contact"><i class="fas fa-envelope"></i><span class="fab-label">Contact</span></a>
 </div>
 
 
-<!-- ==================================================
-     HEADER / NAVIGATION
-=================================================== -->
+<!-- Header -->
 <header class="header">
     <nav class="navbar">
-
-        <div class="logo">
-            Saadiah<span>Saleem</span>
-        </div>
-
         <ul class="nav-links">
             <li><a href="#hero">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -106,1222 +76,531 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
 
-        <button
-                id="theme-toggle"
-                class="theme-toggle"
-                type="button"
-                aria-label="Toggle color theme"
-        >
-            <i class="fas fa-moon" aria-hidden="true"></i>
-        </button>
+        <div class="logo">Saadiah<span>Saleem</span></div>
 
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark theme">
+            <i class="fas fa-moon"></i>
+        </button>
     </nav>
 </header>
 
+<!-- Hero -->
+<section id="hero" class="hero section reveal">
+    <div class="hero-spotlight" id="heroSpotlight" aria-hidden="true"></div>
+    <div class="hero-orbit" aria-hidden="true">
+        <span class="orbit-ring ring-1"></span>
+        <span class="orbit-ring ring-2"></span>
+        <span class="orbit-dot dot-1"></span>
+        <span class="orbit-dot dot-2"></span>
+    </div>
 
-<main>
+    <div class="hero-content">
+        <p class="hero-tagline"><span class="tagline-blip"></span>Aspiring Front-End Developer &middot; Product Mindset &middot; Remote Ready</p>
+        <h1>Hi, I'm <span class="typewriter" id="heroName">Saadiah</span><span class="cursor" aria-hidden="true">|</span>.</h1>
+        <p class="hero-subtitle">
+            I build clean, responsive, and user-friendly web experiences with a strong foundation in
+            engineering, product management, and research.
+        </p>
 
-    <!-- ==================================================
-         HERO
-    =================================================== -->
-    <section id="hero" class="hero section reveal">
+        <div class="hero-actions">
+            <a href="#projects" class="btn primary-btn">View Projects <i class="fas fa-rocket btn-rocket" aria-hidden="true"></i></a>
+            <a href="#contact" class="btn secondary-btn">Let's work together</a>
+            <a href="Saadiah_Saleem_Akhter_CV.pdf" download class="btn download-btn"><i class="fas fa-arrow-down"></i>&nbsp; Download CV</a>
+        </div>
 
-        <div class="hero-content">
+        <div class="hero-status" aria-label="Portfolio highlights">
+            <div class="status-pill"><span class="dot"></span>Open to remote frontend roles</div>
+            <div class="status-pill"><span class="dot dot-static"></span>Based in Cologne, Germany</div>
+        </div>
 
-            <p class="hero-tagline">
-                Aspiring Front-End Developer · Product Mindset · Remote Ready
+        <div class="hero-metrics" aria-label="Key portfolio stats">
+            <div class="metric-card">
+                <strong data-count="8">0</strong>
+                <span>project builds</span>
+            </div>
+            <div class="metric-card">
+                <strong data-count="100" data-suffix="%">0</strong>
+                <span>curious and growing</span>
+            </div>
+        </div>
+
+        <div class="hero-meta">
+            <span><i class="fas fa-map-marker-alt"></i> Cologne, Germany</span>
+            <span><i class="fas fa-globe"></i> Remote-friendly</span>
+        </div>
+    </div>
+
+    <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+        <span></span>
+    </a>
+</section>
+
+<div class="two-column">
+    <!-- About -->
+    <section id="about" class="about section reveal">
+        <div class="section-header">
+            <p class="eyebrow">Mission Log &middot; 01</p>
+            <h2>About Me</h2>
+            <p>Who I am and what I care about.</p>
+        </div>
+
+        <div class="about-content">
+            <p>
+                I'm Saadiah Saleem, a product‑minded aspiring front‑end developer based in Cologne, Germany.
+                I combine a strong engineering background (M.E. in Computer Networks &amp; System Security, B.E.
+                in Computer Systems) with hands‑on experience as a Product Manager and Researcher in AI and
+                smart city projects.
             </p>
-
-            <h1>
-                Hi, I'm <span>Saadiah</span>.
-            </h1>
-
-            <p class="hero-subtitle">
-                I build clean, responsive, and user-friendly web experiences
-                with a strong foundation in engineering, product management,
-                and research.
+            <p>
+                Over time, I've shifted my focus towards building user‑friendly, responsive web interfaces
+                using HTML, CSS, JavaScript, and modern front‑end libraries. I enjoy turning ideas into
+                clean, structured, and accessible web experiences with AI tools strategically as a learning
+                and productivity partner to accelerate prototyping, improve code quality, and explore
+                modern development practices. I'm especially drawn to roles where I can collaborate with
+                teams, understand user needs, and ship meaningful features.
             </p>
-
-            <div class="hero-actions">
-                <a href="#projects" class="btn primary-btn">
-                    View Projects
-                </a>
-
-                <a href="#contact" class="btn secondary-btn">
-                    Let’s work together
-                </a>
-
-                <a
-                        href="Saadiah_Saleem_Akhter_CV.pdf"
-                        download
-                        class="btn download-btn"
-                >
-                    Download CV
-                </a>
-            </div>
-
-            <div
-                    class="hero-status"
-                    aria-label="Portfolio highlights"
-            >
-                <div class="status-pill">
-                    <span class="dot"></span>
-                    Open to remote frontend roles
-                </div>
-
-                <div class="status-pill">
-                    <span class="dot"></span>
-                    Based in Cologne, Germany
-                </div>
-            </div>
-
-            <div
-                    class="hero-metrics"
-                    aria-label="Key portfolio stats"
-            >
-                <div class="metric-card">
-                    <strong>8+</strong>
-                    <span>project builds</span>
-                </div>
-
-                <div class="metric-card">
-                    <strong>100%</strong>
-                    <span>curious and growing</span>
-                </div>
-            </div>
-
-            <div class="hero-meta">
-                    <span>
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        Cologne, Germany
-                    </span>
-
-                <span>
-                        <i class="fas fa-globe" aria-hidden="true"></i>
-                        Remote-friendly
-                    </span>
-            </div>
-
+            <p>
+                With multiple freeCodeCamp certifications, German language qualifications (up to B1), and
+                experience working remotely across countries, I'm now actively looking for remote web
+                development internships where I can grow as a developer and contribute with both my
+                technical and communication skills.
+            </p>
         </div>
     </section>
 
+    <div class="right-column">
+        <div class="accordion-wrapper">
 
-    <!-- ==================================================
-         ABOUT + SKILLS
-    =================================================== -->
-    <div class="two-column">
+            <details class="skill-accordion" id="frontend-skills" open>
+                <summary class="accordion-summary">
+                    <i class="fas fa-html5 accordion-icon" aria-hidden="true"></i>
+                    <div class="section-header">
+                        <h2>Frontend Skills</h2>
+                        <p>Technologies I use to build interfaces.</p>
+                    </div>
+                </summary>
+                <div class="accordion-body">
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h3>Core Frontend</h3>
+                            <ul class="skill-list">
+                                <li><i class="fab fa-html5" aria-hidden="true"></i><span>HTML</span></li>
+                                <li><i class="fab fa-css3-alt" aria-hidden="true"></i><span>CSS</span></li>
+                                <li><i class="fas fa-mobile-alt" aria-hidden="true"></i><span>Responsive Web Design</span></li>
+                            </ul>
+                        </div>
 
-        <!-- ABOUT -->
-        <section id="about" class="about section reveal">
+                        <div class="skill-card">
+                            <h3>Libraries &amp; Frameworks</h3>
+                            <ul class="skill-list">
+                                <li><i class="fab fa-react" aria-hidden="true"></i><span>React.js</span></li>
+                                <li><i class="fas fa-layer-group" aria-hidden="true"></i><span>Redux.js</span></li>
+                                <li><i class="fab fa-bootstrap" aria-hidden="true"></i><span>Bootstrap</span></li>
+                                <li><i class="fas fa-code" aria-hidden="true"></i><span>jQuery</span></li>
+                                <li><i class="fab fa-sass" aria-hidden="true"></i><span>SASS</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </details>
 
-            <div class="section-header">
-                <h2>About Me</h2>
-                <p>Who I am and what I care about.</p>
+            <details class="skill-accordion" id="js-skills">
+                <summary class="accordion-summary">
+                    <i class="fab fa-js-square accordion-icon" aria-hidden="true"></i>
+                    <div class="section-header">
+                        <h2>JavaScript Skills</h2>
+                        <p>Depth from freeCodeCamp JavaScript Algorithms &amp; Data Structures.</p>
+                    </div>
+                </summary>
+                <div class="accordion-body">
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h3>Core JavaScript</h3>
+                            <ul class="skill-list">
+                                <li><i class="fab fa-js-square" aria-hidden="true"></i><span>Basic JavaScript</span></li>
+                                <li><i class="fas fa-code-branch" aria-hidden="true"></i><span>ES6 (modern syntax)</span></li>
+                                <li><i class="fas fa-bug" aria-hidden="true"></i><span>Debugging</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-card">
+                            <h3>Algorithms &amp; Data Structures</h3>
+                            <ul class="skill-list">
+                                <li><i class="fas fa-project-diagram" aria-hidden="true"></i><span>Basic Algorithm Scripting</span></li>
+                                <li><i class="fas fa-cogs" aria-hidden="true"></i><span>Intermediate Algorithm Scripting</span></li>
+                                <li><i class="fas fa-database" aria-hidden="true"></i><span>Basic Data Structures</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-card">
+                            <h3>Programming Paradigms</h3>
+                            <ul class="skill-list">
+                                <li><i class="fas fa-code" aria-hidden="true"></i><span>Functional Programming</span></li>
+                                <li><i class="fas fa-layer-group" aria-hidden="true"></i><span>Object-Oriented Programming (OOP)</span></li>
+                                <li><i class="fas fa-search" aria-hidden="true"></i><span>Regular Expressions</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="skill-accordion" id="tools-skills">
+                <summary class="accordion-summary">
+                    <i class="fas fa-tools accordion-icon" aria-hidden="true"></i>
+                    <div class="section-header">
+                        <h2>Tools &amp; Platforms</h2>
+                        <p>What I use to get work done.</p>
+                    </div>
+                </summary>
+                <div class="accordion-body">
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h3>Development &amp; Data</h3>
+                            <ul class="skill-list">
+                                <li><i class="fab fa-python" aria-hidden="true"></i><span>Python</span></li>
+                                <li><i class="fas fa-chart-line" aria-hidden="true"></i><span>R</span></li>
+                                <li><i class="fas fa-code" aria-hidden="true"></i><span>C++</span></li>
+                                <li><i class="fas fa-robot" aria-hidden="true"></i><span>Machine Learning (TensorFlow, Keras, Pandas, scikit-learn)</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-card">
+                            <h3>Productivity &amp; Design</h3>
+                            <ul class="skill-list">
+                                <li><i class="fas fa-file-powerpoint" aria-hidden="true"></i><span>MS Office</span></li>
+                                <li><i class="fas fa-paint-brush" aria-hidden="true"></i><span>Canva</span></li>
+                                <li><i class="fas fa-file-alt" aria-hidden="true"></i><span>Overleaf</span></li>
+                                <li><i class="fas fa-book" aria-hidden="true"></i><span>Jupyter</span></li>
+                                <li><i class="fas fa-leaf" aria-hidden="true"></i><span>Anaconda</span></li>
+                                <li><i class="fas fa-file-signature" aria-hidden="true"></i><span>EndNote</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="skill-accordion" id="language-skills">
+                <summary class="accordion-summary">
+                    <i class="fas fa-language accordion-icon" aria-hidden="true"></i>
+                    <div class="section-header">
+                        <h2>Languages</h2>
+                        <p>Communication matters as much as code.</p>
+                    </div>
+                </summary>
+                <div class="accordion-body">
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h3>Language Proficiency</h3>
+                            <ul class="skill-list">
+                                <li><i class="fas fa-language" aria-hidden="true"></i><span>English &ndash; Fluent</span></li>
+                                <li><i class="fas fa-language" aria-hidden="true"></i><span>Urdu &ndash; Fluent</span></li>
+                                <li><i class="fas fa-language" aria-hidden="true"></i><span>German &ndash; B1 (DTZ, Goethe A1 &amp; A2)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+        </div>
+    </div>
+</div>
+
+<!-- Projects -->
+<section id="projects" class="projects section reveal">
+    <div class="section-header">
+        <p class="eyebrow">Mission Log &middot; 02</p>
+        <h2>Projects</h2>
+        <p>Certification projects and practice work.</p>
+    </div>
+
+    <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="html">HTML</button>
+        <button class="filter-btn" data-filter="css">CSS</button>
+        <button class="filter-btn" data-filter="js">JavaScript</button>
+        <button class="filter-btn" data-filter="react">React</button>
+        <button class="filter-btn" data-filter="flutter">Flutter</button>
+    </div>
+
+    <div class="projects-grid stagger-grid" id="projectsGrid">
+
+        <a href="https://codepen.io/SaadiahSaleem/pen/yygmxZo" class="project-card" target="_blank" data-category="html css js">
+            <div class="project-image">
+                <img src="./survey-form.png" alt="Survey Form" loading="lazy" />
             </div>
-
-            <div class="about-content">
-
-                <p>
-                    I’m Saadiah Saleem, a product-minded aspiring front-end
-                    developer based in Cologne, Germany. I combine a strong
-                    engineering background (M.E. in Computer Networks & System
-                    Security, B.E. in Computer Systems) with hands-on experience
-                    as a Product Manager and Researcher in AI and smart city
-                    projects.
-                </p>
-
-                <p>
-                    Over time, I’ve shifted my focus towards building
-                    user-friendly, responsive web interfaces using HTML, CSS,
-                    JavaScript, and modern front-end libraries. I enjoy turning
-                    ideas into clean, structured, and accessible web experiences
-                    with AI tools strategically as a learning and productivity
-                    partner to accelerate prototyping, improve code quality,
-                    and explore modern development practices. I’m especially
-                    drawn to roles where I can collaborate with teams,
-                    understand user needs, and ship meaningful features.
-                </p>
-
-                <p>
-                    With multiple freeCodeCamp certifications, German language
-                    qualifications (up to B1), and experience working remotely
-                    across countries, I’m now actively looking for remote web
-                    development internships where I can grow as a developer
-                    and contribute with both my technical and communication
-                    skills.
-                </p>
-
+            <div class="project-info">
+                <h3>Survey Form</h3>
+                <p>Responsive form built as part of freeCodeCamp certification.</p>
+                <div class="project-tags"><span>HTML/</span><span>CSS/</span><span>JS</span></div>
             </div>
-        </section>
+        </a>
 
+        <a href="https://codepen.io/SaadiahSaleem/pen/01a0211b-9422-75df-bccb-c6e88eab1f8d" class="project-card" target="_blank" data-category="html css">
+            <div class="project-image">
+                <img src="./output-tribute.png" alt="Tribute Page" loading="lazy" />
+            </div>
+            <div class="project-info">
+                <h3>Tribute Page</h3>
+                <p>Semantic layout and typography practice.</p>
+                <div class="project-tags"><span>HTML/</span><span>CSS</span></div>
+            </div>
+        </a>
 
-        <!-- SKILLS -->
-        <div class="right-column">
+        <a href="https://codepen.io/SaadiahSaleem/pen/01a0212f-261e-7818-aff5-e0bb8b30a994" class="project-card" target="_blank" data-category="html css">
+            <div class="project-image">
+                <img src="./technical-documentation.png" alt="Technical Documentation" loading="lazy" />
+            </div>
+            <div class="project-info">
+                <h3>Technical Documentation</h3>
+                <p>Structured documentation page with navigation.</p>
+                <div class="project-tags"><span>HTML/</span><span>CSS</span></div>
+            </div>
+        </a>
 
-            <div class="accordion-wrapper">
+        <a href="https://codepen.io/SaadiahSaleem/pen/NPdQge" class="project-card" target="_blank" data-category="react js css">
+            <div class="project-image">
+                <img src="./Random-Quote-Machine.png" alt="Random Quote Machine" loading="lazy" />
+            </div>
+            <div class="project-info">
+                <h3>Random Quote Machine</h3>
+                <p>React-based app fetching and displaying random quotes.</p>
+                <div class="project-tags"><span>React/</span><span>JS</span></div>
+            </div>
+        </a>
 
-                <!-- FRONTEND SKILLS -->
-                <details
-                        class="skill-accordion"
-                        id="frontend-skills"
-                        open
-                >
-                    <summary class="accordion-summary">
-                        <div class="section-header">
-                            <h2>Frontend Skills</h2>
-                            <p>
-                                Technologies I use to build interfaces.
-                            </p>
-                        </div>
-                    </summary>
+        <a href="https://codepen.io/SaadiahSaleem/pen/dPvbwWm" class="project-card" target="_blank" data-category="react js">
+            <div class="project-image">
+                <img src="./Markdown-Previewer.png" alt="Markdown Previewer" loading="lazy" />
+            </div>
+            <div class="project-info">
+                <h3>Markdown Previewer</h3>
+                <p>Live markdown preview using React and JavaScript.</p>
+                <div class="project-tags"><span>React/</span><span>JS</span></div>
+            </div>
+        </a>
 
-                    <div class="accordion-body">
+        <a href="https://codepen.io/SaadiahSaleem/pen/XJMrvQe" class="project-card" target="_blank" data-category="react js">
+            <div class="project-image">
+                <img src="./Drum-Machine.png" alt="Drum Machine" loading="lazy" />
+            </div>
+            <div class="project-info">
+                <h3>Drum Machine</h3>
+                <p>Interactive sound pads built with React.</p>
+                <div class="project-tags"><span>React/</span><span>JS</span></div>
+            </div>
+        </a>
 
-                        <div class="skills-grid">
+        <a href="https://codepen.io/SaadiahSaleem/pen/zxZYRzj" class="project-card" target="_blank" data-category="js css">
+            <div class="project-image">
+                <img src="./JavaScript-Calculator.png" alt="JavaScript Calculator" loading="lazy" />
+            </div>
+            <div class="project-info">
+                <h3>JavaScript Calculator</h3>
+                <p>Calculator app demonstrating state management and logic.</p>
+                <div class="project-tags"><span>JS/</span><span>CSS</span></div>
+            </div>
+        </a>
 
-                            <div class="skill-card">
-                                <h3>Core Frontend</h3>
+        <a href="https://codepen.io/SaadiahSaleem/pen/rayNdNQ" class="project-card" target="_blank" data-category="react js css">
+            <div class="project-image">
+                <img src="./25%20+%205-Clock.png" alt="25 + 5 Clock" loading="lazy" />
+            </div>
+            <div class="project-info">
+                <h3>25 + 5 Clock</h3>
+                <p>Pomodoro-style timer built with React.</p>
+                <div class="project-tags"><span>React/</span><span>JS/</span><span>CSS</span></div>
+            </div>
+        </a>
 
-                                <ul class="skill-list">
-                                    <li>
-                                        <i class="fab fa-html5" aria-hidden="true"></i>
-                                        <span>HTML</span>
-                                    </li>
+        <div class="project-card project-card--flutter" data-category="flutter">
+            <div class="project-image">
+                <img src="./gem-quest.png" alt="Gem Quest preview" loading="lazy" />
+            </div>
+            <div class="project-info">
+                <h3>Gem Quest</h3>
+                <p>A colorful Match-3 puzzle game &mdash; swap gems to create matches, build combos and progress through levels.</p>
+                <div class="project-tags"><span>Flutter/</span><span>Dart/</span><span>GitHub Pages</span></div>
+                <div class="project-links">
+                    <a class="btn live-demo-btn" href="https://saadiahsaleem.github.io/gem_quest/" target="_blank" rel="noreferrer">Live Demo</a>
+                    <a class="btn secondary-btn" href="https://github.com/SaadiahSaleem" target="_blank" rel="noreferrer" aria-label="Source Code"><i class="fab fa-github" aria-hidden="true"></i><span class="sr-only">Source Code</span></a>
+                </div>
+            </div>
+        </div>
 
-                                    <li>
-                                        <i class="fab fa-css3-alt" aria-hidden="true"></i>
-                                        <span>CSS</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-mobile-alt" aria-hidden="true"></i>
-                                        <span>Responsive Web Design</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="skill-card">
-                                <h3>Libraries & Frameworks</h3>
-
-                                <ul class="skill-list">
-                                    <li>
-                                        <i class="fab fa-react" aria-hidden="true"></i>
-                                        <span>React.js</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-layer-group" aria-hidden="true"></i>
-                                        <span>Redux.js</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fab fa-bootstrap" aria-hidden="true"></i>
-                                        <span>Bootstrap</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-code" aria-hidden="true"></i>
-                                        <span>jQuery</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fab fa-sass" aria-hidden="true"></i>
-                                        <span>SASS</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </details>
-
-
-                <!-- JAVASCRIPT SKILLS -->
-                <details
-                        class="skill-accordion"
-                        id="js-skills"
-                >
-                    <summary class="accordion-summary">
-                        <div class="section-header">
-                            <h2>JavaScript Skills</h2>
-                            <p>
-                                Depth from freeCodeCamp JavaScript Algorithms
-                                & Data Structures.
-                            </p>
-                        </div>
-                    </summary>
-
-                    <div class="accordion-body">
-
-                        <div class="skills-grid">
-
-                            <div class="skill-card">
-                                <h3>Core JavaScript</h3>
-
-                                <ul class="skill-list">
-                                    <li>
-                                        <i class="fab fa-js-square" aria-hidden="true"></i>
-                                        <span>Basic JavaScript</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-code-branch" aria-hidden="true"></i>
-                                        <span>ES6 (modern syntax)</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-bug" aria-hidden="true"></i>
-                                        <span>Debugging</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="skill-card">
-                                <h3>Algorithms & Data Structures</h3>
-
-                                <ul class="skill-list">
-                                    <li>
-                                        <i class="fas fa-project-diagram" aria-hidden="true"></i>
-                                        <span>Basic Algorithm Scripting</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-cogs" aria-hidden="true"></i>
-                                        <span>Intermediate Algorithm Scripting</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-database" aria-hidden="true"></i>
-                                        <span>Basic Data Structures</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="skill-card">
-                                <h3>Programming Paradigms</h3>
-
-                                <ul class="skill-list">
-                                    <li>
-                                        <i class="fas fa-code" aria-hidden="true"></i>
-                                        <span>Functional Programming</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-layer-group" aria-hidden="true"></i>
-                                        <span>Object-Oriented Programming (OOP)</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-search" aria-hidden="true"></i>
-                                        <span>Regular Expressions</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </details>
-
-
-                <!-- TOOLS -->
-                <details
-                        class="skill-accordion"
-                        id="tools-skills"
-                >
-                    <summary class="accordion-summary">
-                        <div class="section-header">
-                            <h2>Tools & Platforms</h2>
-                            <p>
-                                What I use to get work done.
-                            </p>
-                        </div>
-                    </summary>
-
-                    <div class="accordion-body">
-
-                        <div class="skills-grid">
-
-                            <div class="skill-card">
-                                <h3>Development & Data</h3>
-
-                                <ul class="skill-list">
-                                    <li>
-                                        <i class="fab fa-python" aria-hidden="true"></i>
-                                        <span>Python</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-chart-line" aria-hidden="true"></i>
-                                        <span>R</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-code" aria-hidden="true"></i>
-                                        <span>C++</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-robot" aria-hidden="true"></i>
-                                        <span>
-                                                Machine Learning
-                                                (TensorFlow, Keras, Pandas,
-                                                scikit-learn)
-                                            </span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="skill-card">
-                                <h3>Productivity & Design</h3>
-
-                                <ul class="skill-list">
-                                    <li>
-                                        <i class="fas fa-file-powerpoint" aria-hidden="true"></i>
-                                        <span>MS Office</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-paint-brush" aria-hidden="true"></i>
-                                        <span>Canva</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-file-alt" aria-hidden="true"></i>
-                                        <span>Overleaf</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                        <span>Jupyter</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-leaf" aria-hidden="true"></i>
-                                        <span>Anaconda</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-file-signature" aria-hidden="true"></i>
-                                        <span>EndNote</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </details>
-
-
-                <!-- LANGUAGES -->
-                <details
-                        class="skill-accordion"
-                        id="language-skills"
-                >
-                    <summary class="accordion-summary">
-                        <div class="section-header">
-                            <h2>Languages</h2>
-                            <p>
-                                Communication matters as much as code.
-                            </p>
-                        </div>
-                    </summary>
-
-                    <div class="accordion-body">
-
-                        <div class="skills-grid">
-
-                            <div class="skill-card">
-                                <h3>Language Proficiency</h3>
-
-                                <ul class="skill-list">
-                                    <li>
-                                        <i class="fas fa-language" aria-hidden="true"></i>
-                                        <span>English – Fluent</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-language" aria-hidden="true"></i>
-                                        <span>Urdu – Fluent</span>
-                                    </li>
-
-                                    <li>
-                                        <i class="fas fa-language" aria-hidden="true"></i>
-                                        <span>
-                                                German – B1 (DTZ, Goethe A1 & A2)
-                                            </span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </details>
-
+        <div class="project-card project-card--flutter" data-category="flutter">
+            <div class="project-image">
+                <img src="./tap-the-circle.png" alt="Tap the Circle preview" loading="lazy" />
+            </div>
+            <div class="project-info">
+                <h3>Tap the Circle</h3>
+                <p>An interactive Flutter game created as an introduction to Flutter development.</p>
+                <div class="project-tags"><span>Flutter/</span><span>Dart/</span><span>GitHub Pages</span></div>
+                <div class="project-links">
+                    <a class="btn live-demo-btn" href="https://saadiahsaleem.github.io/tap_the_circle/" target="_blank" rel="noreferrer">Live Demo</a>
+                    <a class="btn secondary-btn" href="https://github.com/SaadiahSaleem" target="_blank" rel="noreferrer" aria-label="Source Code"><i class="fab fa-github" aria-hidden="true"></i><span class="sr-only">Source Code</span></a>
+                </div>
             </div>
         </div>
 
     </div>
+</section>
 
-
-    <!-- ==================================================
-         PROJECTS
-    =================================================== -->
-    <section id="projects" class="projects section reveal">
-
+<div class="experience-cert-layout">
+    <!-- Experience -->
+    <section id="experience" class="experience section reveal">
         <div class="section-header">
-            <h2>Projects</h2>
-            <p>Certification projects and practice work.</p>
+            <p class="eyebrow">Mission Log &middot; 03</p>
+            <h2>Experience</h2>
+            <p>Roles that shaped how I think and build.</p>
         </div>
 
-        <div class="project-filters">
-            <button class="filter-btn active" data-filter="all" type="button">
-                All
-            </button>
+        <div class="timeline">
+            <div class="timeline-progress" id="timelineProgress" aria-hidden="true"></div>
 
-            <button class="filter-btn" data-filter="html" type="button">
-                HTML
-            </button>
-
-            <button class="filter-btn" data-filter="css" type="button">
-                CSS
-            </button>
-
-            <button class="filter-btn" data-filter="js" type="button">
-                JavaScript
-            </button>
-
-            <button class="filter-btn" data-filter="react" type="button">
-                React
-            </button>
-
-            <button class="filter-btn" data-filter="flutter" type="button">
-                Flutter
-            </button>
-        </div>
-
-
-        <div class="projects-grid">
-
-            <!-- Survey Form -->
-            <a
-                    href="https://codepen.io/SaadiahSaleem/pen/yygmxZo"
-                    class="project-card"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-category="html css js"
-            >
-                <div class="project-image">
-                    <img
-                            src="./survey-form.png"
-                            alt="Survey Form"
-                    >
-                </div>
-
-                <div class="project-info">
-                    <h3>Survey Form</h3>
-                    <p>
-                        Responsive form built as part of freeCodeCamp
-                        certification.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>HTML/</span>
-                        <span>CSS/</span>
-                        <span>JS</span>
-                    </div>
-                </div>
-            </a>
-
-
-            <!-- Tribute Page -->
-            <a
-                    href="https://codepen.io/SaadiahSaleem/pen/01a0211b-9422-75df-bccb-c6e88eab1f8d"
-                    class="project-card"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-category="html css"
-            >
-                <div class="project-image">
-                    <img
-                            src="./output-tribute.png"
-                            alt="Tribute Page"
-                    >
-                </div>
-
-                <div class="project-info">
-                    <h3>Tribute Page</h3>
-                    <p>
-                        Semantic layout and typography practice.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>HTML/</span>
-                        <span>CSS</span>
-                    </div>
-                </div>
-            </a>
-
-
-            <!-- Technical Documentation -->
-            <a
-                    href="https://codepen.io/SaadiahSaleem/pen/01a0212f-261e-7818-aff5-e0bb8b30a994"
-                    class="project-card"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-category="html css"
-            >
-                <div class="project-image">
-                    <img
-                            src="./technical-documentation.png"
-                            alt="Technical Documentation"
-                    >
-                </div>
-
-                <div class="project-info">
-                    <h3>Technical Documentation</h3>
-                    <p>
-                        Structured documentation page with navigation.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>HTML/</span>
-                        <span>CSS</span>
-                    </div>
-                </div>
-            </a>
-
-
-            <!-- Random Quote Machine -->
-            <a
-                    href="https://codepen.io/SaadiahSaleem/pen/NPdQge"
-                    class="project-card"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-category="react js css"
-            >
-                <div class="project-image">
-                    <img
-                            src="./Random-Quote-Machine.png"
-                            alt="Random Quote Machine"
-                    >
-                </div>
-
-                <div class="project-info">
-                    <h3>Random Quote Machine</h3>
-                    <p>
-                        React-based app fetching and displaying random quotes.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>React/</span>
-                        <span>JS</span>
-                    </div>
-                </div>
-            </a>
-
-
-            <!-- Markdown Previewer -->
-            <a
-                    href="https://codepen.io/SaadiahSaleem/pen/dPvbwWm"
-                    class="project-card"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-category="react js"
-            >
-                <div class="project-image">
-                    <img
-                            src="./Markdown-Previewer.png"
-                            alt="Markdown Previewer"
-                    >
-                </div>
-
-                <div class="project-info">
-                    <h3>Markdown Previewer</h3>
-                    <p>
-                        Live markdown preview using React and JavaScript.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>React/</span>
-                        <span>JS</span>
-                    </div>
-                </div>
-            </a>
-
-
-            <!-- Drum Machine -->
-            <a
-                    href="https://codepen.io/SaadiahSaleem/pen/XJMrvQe"
-                    class="project-card"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-category="react js"
-            >
-                <div class="project-image">
-                    <img
-                            src="./Drum-Machine.png"
-                            alt="Drum Machine"
-                    >
-                </div>
-
-                <div class="project-info">
-                    <h3>Drum Machine</h3>
-                    <p>
-                        Interactive sound pads built with React.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>React/</span>
-                        <span>JS</span>
-                    </div>
-                </div>
-            </a>
-
-
-            <!-- JavaScript Calculator -->
-            <a
-                    href="https://codepen.io/SaadiahSaleem/pen/zxZYRzj"
-                    class="project-card"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-category="js css"
-            >
-                <div class="project-image">
-                    <img
-                            src="./JavaScript-Calculator.png"
-                            alt="JavaScript Calculator"
-                    >
-                </div>
-
-                <div class="project-info">
-                    <h3>JavaScript Calculator</h3>
-                    <p>
-                        Calculator app demonstrating state management
-                        and logic.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>JS/</span>
-                        <span>CSS</span>
-                    </div>
-                </div>
-            </a>
-
-
-            <!-- 25 + 5 Clock -->
-            <a
-                    href="https://codepen.io/SaadiahSaleem/pen/rayNdNQ"
-                    class="project-card"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-category="react js css"
-            >
-                <div class="project-image">
-                    <img
-                            src="./25%20+%205-Clock.png"
-                            alt="25 + 5 Clock"
-                    >
-                </div>
-
-                <div class="project-info">
-                    <h3>25 + 5 Clock</h3>
-                    <p>
-                        Pomodoro-style timer built with React.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>React/</span>
-                        <span>JS/</span>
-                        <span>CSS</span>
-                    </div>
-                </div>
-            </a>
-
-
-            <!-- Gem Quest -->
-            <div
-                    class="project-card project-card--flutter"
-                    data-category="flutter"
-            >
-                <div class="project-image">
-                    <img
-                            src="./gem-quest.png"
-                            alt="Gem Quest preview"
-                    >
-                </div>
-
-                <div class="project-info">
-                    <h3>Gem Quest</h3>
-
-                    <p>
-                        A colorful Match-3 puzzle game — swap gems to create
-                        matches, build combos and progress through levels.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>Flutter/</span>
-                        <span>Dart/</span>
-                        <span>GitHub Pages</span>
-                    </div>
-
-                    <div class="project-links">
-                        <a
-                                class="btn live-demo-btn"
-                                href="https://saadiahsaleem.github.io/gem_quest/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                        >
-                            Live Demo
-                        </a>
-
-                        <a
-                                class="btn secondary-btn"
-                                href="https://github.com/SaadiahSaleem"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Source Code"
-                        >
-                            <i class="fab fa-github" aria-hidden="true"></i>
-                            <span class="sr-only">Source Code</span>
-                        </a>
-                    </div>
-                </div>
+            <div class="timeline-item">
+                <h3>Product Manager &middot; ConeIQ</h3>
+                <span class="timeline-meta">Jun 2022 &ndash; Mar 2023 &middot; Remote &middot; Virginia, USA</span>
+                <p>Collaborated with developers on staging servers, testing, and product workflows.</p>
             </div>
 
-
-            <!-- Tap the Circle -->
-            <div
-                    class="project-card project-card--flutter"
-                    data-category="flutter"
-            >
-                <div class="project-image">
-                    <img
-                            src="./tap-the-circle.png"
-                            alt="Tap the Circle preview"
-                    >
-                </div>
-
-                <div class="project-info">
-                    <h3>Tap the Circle</h3>
-
-                    <p>
-                        An interactive Flutter game created as an introduction
-                        to Flutter development.
-                    </p>
-
-                    <div class="project-tags">
-                        <span>Flutter/</span>
-                        <span>Dart/</span>
-                        <span>GitHub Pages</span>
-                    </div>
-
-                    <div class="project-links">
-                        <a
-                                class="btn live-demo-btn"
-                                href="https://saadiahsaleem.github.io/tap_the_circle/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                        >
-                            Live Demo
-                        </a>
-
-                        <a
-                                class="btn secondary-btn"
-                                href="https://github.com/SaadiahSaleem"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Source Code"
-                        >
-                            <i class="fab fa-github" aria-hidden="true"></i>
-                            <span class="sr-only">Source Code</span>
-                        </a>
-                    </div>
-                </div>
+            <div class="timeline-item">
+                <h3>Research Assistant &middot; Smart City Lab (NCAI, NED UET)</h3>
+                <span class="timeline-meta">Aug 2021 &ndash; Jan 2022 &middot; Karachi, Pakistan</span>
+                <p>Supported AI and smart city projects through technical writing and coordination.</p>
             </div>
 
+            <div class="timeline-item">
+                <h3>Student Researcher &middot; Smart City Lab (NCAI, NED UET)</h3>
+                <span class="timeline-meta">Aug 2020 &ndash; Jul 2021 &middot; Karachi, Pakistan</span>
+                <p>Worked on machine learning projects including credit risk prediction.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Teacher &middot; Al Badar Higher Secondary School</h3>
+                <span class="timeline-meta">Jan 2019 &ndash; Aug 2020 &middot; Karachi, Pakistan</span>
+                <p>Taught computer studies and mathematics.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Intern &middot; Meezan Bank Limited</h3>
+                <span class="timeline-meta">2017 &middot; Pakistan</span>
+                <p>Assisted in compiling ADC handbook and coordinated with branches.</p>
+            </div>
         </div>
     </section>
 
+    <!-- Certifications -->
+    <section id="certifications" class="certifications section reveal">
+        <div class="section-header">
+            <p class="eyebrow">Mission Log &middot; 04</p>
+            <h2>Licenses &amp; Certifications</h2>
+            <p>Continuous learning that backs my skills.</p>
+        </div>
 
-    <!-- ==================================================
-         EXPERIENCE + CERTIFICATIONS
-    =================================================== -->
-    <div class="experience-cert-layout">
-
-        <!-- EXPERIENCE -->
-        <section
-                id="experience"
-                class="experience section reveal"
-        >
-            <div class="section-header">
-                <h2>Experience</h2>
-                <p>
-                    Roles that shaped how I think and build.
-                </p>
-            </div>
-
-            <div class="timeline">
-
-                <div class="timeline-item">
-                    <h3>
-                        Product Manager · ConeIQ
-                    </h3>
-
-                    <span class="timeline-meta">
-                            Jun 2022 – Mar 2023 · Remote · Virginia, USA
-                        </span>
-
-                    <p>
-                        Collaborated with developers on staging servers,
-                        testing, and product workflows.
-                    </p>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>
-                        Research Assistant · Smart City Lab (NCAI, NED UET)
-                    </h3>
-
-                    <span class="timeline-meta">
-                            Aug 2021 – Jan 2022 · Karachi, Pakistan
-                        </span>
-
-                    <p>
-                        Supported AI and smart city projects through
-                        technical writing and coordination.
-                    </p>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>
-                        Student Researcher · Smart City Lab (NCAI, NED UET)
-                    </h3>
-
-                    <span class="timeline-meta">
-                            Aug 2020 – Jul 2021 · Karachi, Pakistan
-                        </span>
-
-                    <p>
-                        Worked on machine learning projects including
-                        credit risk prediction.
-                    </p>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>
-                        Teacher · Al Badar Higher Secondary School
-                    </h3>
-
-                    <span class="timeline-meta">
-                            Jan 2019 – Aug 2020 · Karachi, Pakistan
-                        </span>
-
-                    <p>
-                        Taught computer studies and mathematics.
-                    </p>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>
-                        Intern · Meezan Bank Limited
-                    </h3>
-
-                    <span class="timeline-meta">
-                            2017 · Pakistan
-                        </span>
-
-                    <p>
-                        Assisted in compiling ADC handbook and coordinated
-                        with branches.
-                    </p>
-                </div>
-
-            </div>
-        </section>
+        <div class="cert-grid stagger-grid" id="certGrid">
+            <a class="cert-card" href="https://www.freecodecamp.org/certification/fcc821caa9b-0632-4aa6-8555-b6065998cf3b/front-end-development-libraries" target="_blank" rel="noopener noreferrer" aria-label="Open Front-End Development Libraries certificate in new tab"><h3>Frontend Development Libraries V8</h3><p>freeCodeCamp &middot; Aug 2026</p></a>
+            <a class="cert-card" href="https://www.freecodecamp.org/certification/fcc821caa9b-0632-4aa6-8555-b6065998cf3b/javascript-algorithms-and-data-structures" target="_blank" rel="noopener noreferrer" aria-label="Open JavaScript Algorithms and Data Structures certificate in new tab"><h3>JavaScript Algorithms &amp; Data Structures</h3><p>freeCodeCamp &middot; Oct 2025</p></a>
+            <a class="cert-card" href="https://www.freecodecamp.org/certification/fcc821caa9b-0632-4aa6-8555-b6065998cf3b/responsive-web-design" target="_blank" rel="noopener noreferrer" aria-label="Open Responsive Web Design certificate in new tab"><h3>Responsive Web Design</h3><p>freeCodeCamp &middot; Aug 2025</p></a>
+            <div class="cert-card"><h3>DTZ A2&ndash;B1</h3><p>g.a.s.t &middot; Mar 2025</p><p class="cert-cred">Credential ID: <strong>G1008002</strong></p></div>
+            <div class="cert-card"><h3>Goethe A2</h3><p>Goethe-Institut &middot; May 2022</p></div>
+            <div class="cert-card"><h3>Goethe A1</h3><p>Goethe-Institut &middot; Apr 2022</p></div>
+            <a class="cert-card" href="https://www.coursera.org/account/accomplishments/certificate/P9NKZHV4UK35" target="_blank" rel="noopener noreferrer" aria-label="Open Sequences and Time Series Coursera certificate in new tab"><h3>Sequences &amp; Time Series</h3><p>Coursera &middot; Jan 2022</p></a>
+            <div class="cert-card"><h3>Digital Literacy</h3><p>DigiSkills.pk &middot; Feb 2021</p><p class="cert-cred">Credential ID: <strong>M7PV4A3PQ</strong></p></div>
+            <div class="cert-card"><h3>Freelancing</h3><p>DigiSkills.pk &middot; Nov 2019</p><p class="cert-cred">Credential ID: <strong>TGF4DAXPQ</strong></p></div>
+            <div class="cert-card"><h3>Graphic Design</h3><p>DigiSkills.pk &middot; Nov 2019</p><p class="cert-cred">Credential ID: <strong>AH6KZZKPQ</strong></p></div>
+            <div class="cert-card"><h3>Google Crowdsource Campaign</h3><p>Google &middot; Jan 2018</p></div>
+        </div>
+    </section>
+</div>
 
 
-        <!-- CERTIFICATIONS -->
-        <section
-                id="certifications"
-                class="certifications section reveal"
-        >
-            <div class="section-header">
-                <h2>Licenses & Certifications</h2>
-                <p>
-                    Continuous learning that backs my skills.
-                </p>
-            </div>
-
-            <div class="cert-grid">
-
-                <a
-                        class="cert-card"
-                        href="https://www.freecodecamp.org/certification/fcc821caa9b-0632-4aa6-8555-b6065998cf3b/front-end-development-libraries"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Open Front-End Development Libraries certificate in new tab"
-                >
-                    <h3>Frontend Development Libraries V8</h3>
-                    <p>freeCodeCamp · Aug 2026</p>
-                </a>
-
-                <a
-                        class="cert-card"
-                        href="https://www.freecodecamp.org/certification/fcc821caa9b-0632-4aa6-8555-b6065998cf3b/javascript-algorithms-and-data-structures"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Open JavaScript Algorithms and Data Structures certificate in new tab"
-                >
-                    <h3>
-                        JavaScript Algorithms & Data Structures
-                    </h3>
-                    <p>freeCodeCamp · Oct 2025</p>
-                </a>
-
-                <a
-                        class="cert-card"
-                        href="https://www.freecodecamp.org/certification/fcc821caa9b-0632-4aa6-8555-b6065998cf3b/responsive-web-design"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Open Responsive Web Design certificate in new tab"
-                >
-                    <h3>Responsive Web Design</h3>
-                    <p>freeCodeCamp · Aug 2025</p>
-                </a>
-
-                <div class="cert-card">
-                    <h3>DTZ A2–B1</h3>
-                    <p>g.a.s.t · Mar 2025</p>
-                    <p class="cert-cred">
-                        Credential ID:
-                        <strong>G1008002</strong>
-                    </p>
-                </div>
-
-                <div class="cert-card">
-                    <h3>Goethe A2</h3>
-                    <p>Goethe-Institut · May 2022</p>
-                </div>
-
-                <div class="cert-card">
-                    <h3>Goethe A1</h3>
-                    <p>Goethe-Institut · Apr 2022</p>
-                </div>
-
-                <a
-                        class="cert-card"
-                        href="https://www.coursera.org/account/accomplishments/certificate/P9NKZHV4UK35"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Open Sequences and Time Series Coursera certificate in new tab"
-                >
-                    <h3>Sequences & Time Series</h3>
-                    <p>Coursera · Jan 2022</p>
-                </a>
-
-                <div class="cert-card">
-                    <h3>Digital Literacy</h3>
-                    <p>DigiSkills.pk · Feb 2021</p>
-                    <p class="cert-cred">
-                        Credential ID:
-                        <strong>M7PV4A3PQ</strong>
-                    </p>
-                </div>
-
-                <div class="cert-card">
-                    <h3>Freelancing</h3>
-                    <p>DigiSkills.pk · Nov 2019</p>
-                    <p class="cert-cred">
-                        Credential ID:
-                        <strong>TGF4DAXPQ</strong>
-                    </p>
-                </div>
-
-                <div class="cert-card">
-                    <h3>Graphic Design</h3>
-                    <p>DigiSkills.pk · Nov 2019</p>
-                    <p class="cert-cred">
-                        Credential ID:
-                        <strong>AH6KZZKPQ</strong>
-                    </p>
-                </div>
-
-                <div class="cert-card">
-                    <h3>Google Crowdsource Campaign</h3>
-                    <p>Google · Jan 2018</p>
-                </div>
-
-            </div>
-        </section>
-
+<!-- Creative Interests -->
+<section id="creative" class="section reveal">
+    <div class="section-header">
+        <p class="eyebrow">Mission Log &middot; 05</p>
+        <h2>Creative Interests</h2>
+        <p>Life beyond code.</p>
     </div>
 
+    <div class="creative-intro">
+        <p>
+            Beyond my work in web development, I enjoy writing poetry, capturing scenic photography,
+            cooking, and creating video content. These creative pursuits allow me to express ideas,
+            tell stories, and explore different forms of visual and personal communication. My YouTube
+            channel, <a href="https://youtube.com/@saadiahsaleem5363?si=V34r_DpEwV5iGz0C" target="_blank" rel="noreferrer">@saadiahsaleem5363</a>, reflects this creative side, and I've curated playlists that showcase my interests and work.
+        </p>
+    </div>
 
-    <!-- ==================================================
-         CREATIVE INTERESTS
-    =================================================== -->
-    <section id="creative" class="section reveal">
-
-        <div class="section-header">
-            <h2>Creative Interests</h2>
-            <p>Life beyond code.</p>
-        </div>
-
-        <div class="creative-intro">
-            <p>
-                Beyond my work in web development, I enjoy writing poetry,
-                capturing scenic photography, cooking, and creating video
-                content. These creative pursuits allow me to express ideas,
-                tell stories, and explore different forms of visual and
-                personal communication. My YouTube channel,
-                <a
-                        href="https://youtube.com/@saadiahsaleem5363?si=V34r_DpEwV5iGz0C"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                >
-                    @saadiahsaleem5363
-                </a>,
-                reflects this creative side, and I’ve curated playlists
-                that showcase my interests and work.
-            </p>
-        </div>
-
-        <div class="creative-grid">
-
-            <a
-                    class="creative-card"
-                    href="https://youtube.com/playlist?list=PLggBlW-Oiz2ZYXoN-GXk5YUMahGdyPzcE&si=UT4-iUjLYDlGsxeH"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open playlist IX Computer (Sindh Board)"
-            >
-                <img
-                        src="https://i.ytimg.com/vi/FYUB2ByBXao/hqdefault.jpg"
-                        alt="Playlist thumbnail for IX Computer (Sindh Board)"
-                >
-
-                <div class="creative-card-body">
-                    <h3>IX Computer (Sindh Board)</h3>
-                </div>
-            </a>
-
-
-            <a
-                    class="creative-card"
-                    href="https://youtube.com/playlist?list=PLggBlW-Oiz2ZnJPfzPQt5AHamBjqJJsSI&si=pEcbsRQXUUQYUxMg"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open playlist Foodie in Germany"
-            >
-                <img
-                        src="https://i.ytimg.com/vi/-9vGFevAFJI/hqdefault.jpg"
-                        alt="Playlist thumbnail for Foodie in Germany"
-                >
-
-                <div class="creative-card-body">
-                    <h3>Foodie in Germany</h3>
-                </div>
-            </a>
-
-        </div>
-    </section>
-
-
-    <!-- ==================================================
-         CONTACT
-    =================================================== -->
-    <section id="contact" class="contact section reveal">
-
-        <div class="section-header">
-            <h2>Contact</h2>
-            <p>
-                Let’s create something inspiring together.
-            </p>
-        </div>
-
-        <div class="contact-grid">
-
-            <div class="contact-item">
-                <i class="fas fa-envelope" aria-hidden="true"></i>
-
-                <div class="contact-content">
-                    <span>Email</span>
-                    <p>saadiah.saleem@gmail.com</p>
-                </div>
+    <div class="creative-grid">
+        <a class="creative-card" href="https://youtube.com/playlist?list=PLggBlW-Oiz2ZYXoN-GXk5YUMahGdyPzcE&si=UT4-iUjLYDlGsxeH" target="_blank" rel="noreferrer" aria-label="Open playlist IX Computer (Sindh Board)">
+            <img src="https://i.ytimg.com/vi/FYUB2ByBXao/hqdefault.jpg" alt="Playlist thumbnail for IX Computer (Sindh Board)" loading="lazy" />
+            <div class="creative-card-body">
+                <h3>IX Computer (Sindh Board)</h3>
             </div>
+        </a>
 
-
-            <div class="contact-item social-contact social-github">
-
-                <div class="social-icon">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                </div>
-
-                <div class="contact-content">
-                    <span>GitHub</span>
-                    <p>github.com/SaadiahSaleem</p>
-                </div>
-
+        <a class="creative-card" href="https://youtube.com/playlist?list=PLggBlW-Oiz2ZnJPfzPQt5AHamBjqJJsSI&si=pEcbsRQXUUQYUxMg" target="_blank" rel="noreferrer" aria-label="Open playlist Foodie in Germany">
+            <img src="https://i.ytimg.com/vi/-9vGFevAFJI/hqdefault.jpg" alt="Playlist thumbnail for Foodie in Germany" loading="lazy" />
+            <div class="creative-card-body">
+                <h3>Foodie in Germany</h3>
             </div>
+        </a>
+    </div>
+</section>
 
+<!-- Contact -->
+<section id="contact" class="contact section reveal">
+    <div class="section-header">
+        <p class="eyebrow">Mission Log &middot; 06</p>
+        <h2>Contact</h2>
+        <p>Let's create something inspiring together.</p>
+    </div>
 
-            <div class="contact-item social-contact social-linkedin">
-
-                <div class="social-icon">
-                    <i class="fab fa-linkedin" aria-hidden="true"></i>
-                </div>
-
-                <div class="contact-content">
-                    <span>LinkedIn</span>
-                    <p>linkedin.com/in/saadiah-saleem</p>
-                </div>
-
+    <div class="contact-grid">
+        <a class="contact-item" href="mailto:saadiah.saleem@gmail.com">
+            <i class="fas fa-envelope"></i>
+            <div class="contact-content">
+                <span>Email</span>
+                <p>saadiah.saleem@gmail.com</p>
             </div>
+        </a>
 
-
-            <div class="contact-item">
-
-                <i class="fas fa-mobile-alt" aria-hidden="true"></i>
-
-                <div class="contact-content">
-                    <span>Phone</span>
-                    <p>+49 176 8498 4439</p>
-                </div>
-
+        <a class="contact-item social-contact social-github" href="https://github.com/SaadiahSaleem" target="_blank" rel="noreferrer">
+            <div class="social-icon"><i class="fab fa-github"></i></div>
+            <div class="contact-content">
+                <span>GitHub</span>
+                <p>github.com/SaadiahSaleem</p>
             </div>
+        </a>
 
-        </div>
-    </section>
+        <a class="contact-item social-contact social-linkedin" href="https://linkedin.com/in/saadiah-saleem" target="_blank" rel="noreferrer">
+            <div class="social-icon"><i class="fab fa-linkedin"></i></div>
+            <div class="contact-content">
+                <span>LinkedIn</span>
+                <p>linkedin.com/in/saadiah-saleem</p>
+            </div>
+        </a>
 
-</main>
+        <a class="contact-item" href="tel:+491768498439">
+            <i class="fas fa-mobile-alt"></i>
+            <div class="contact-content">
+                <span>Phone</span>
+                <p>+49 176 8498 4439</p>
+            </div>
+        </a>
+    </div>
+</section>
 
-
-<!-- ==================================================
-     FOOTER
-=================================================== -->
+<!-- Footer -->
 <footer class="footer">
-    <p>
-        © 2025 · Built by
-        <span>Saadiah Saleem Akhter</span>
-    </p>
+    <p>&copy; 2025 &middot; Built by <span>Saadiah Saleem Akhter</span></p>
 </footer>
 
-
-<!-- ==================================================
-     SCROLL TO TOP
-=================================================== -->
-<button
-        id="scroll-top"
-        class="scroll-top"
-        type="button"
-        aria-label="Scroll to top"
->
-    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+<!-- Scroll to top -->
+<button id="scroll-top" class="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
 </button>
 
-
-<!-- JavaScript -->
 <script src="script.js"></script>
-
 </body>
 </html>
